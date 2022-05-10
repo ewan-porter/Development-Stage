@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="themes/caloriescount.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Passion+One&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <title>Calories Count</title>
+</head>
+
+<body>
+    <!-- Footer code -->
+    <footer data-role="footer" data-position="fixed" data-tap-toggle="false" data-theme="a">
+        <div class="ui-navbar" data-role="navbar">
+            <ul>
+                <li> <a href="#DevInfo" data-rel="popup" data-transition="pop" data-icon="gear">Developer info</a>
+
+                </li>
+
+                <li> <a href="#contact" data-rel="popup" data-position-to="origin" data-icon="phone">Get in Touch</a>
+                </li>
+                <li> <a href="#counter" id="calorieCounter" data-icon="calendar" data-rel="popup" data-transition="pop"
+                        data-position-to="origin">Calorie Counter</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        $(function () {
+            $("[data-role='footer']").toolbar();
+        });
+    </script>
+
+    <!-- Developer info popup -->
+
+    <div class="ui-popup ui-body-a ui-content" data-role="popup" id="DevInfo">
+        <a href="#" data-rel="back"
+            class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <p><b>Developer: </b>Ewan Porter<br><br>
+            <b>Version: </b>1.0<br><br>
+            <b>Release Date: </b>13/12/17<br><br>
+        </p>
+    </div>
+
+    <!-- Form dialog box code -->
+    <div class="ui-popup ui-body-a ui-content" data-role="popup" id="contact" data-dismissible="false">
+        <a href="#" data-rel="back"
+            class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <form>
+            <div style="padding:10px 20px;">
+                <h3>Get in touch...</h3>
+                <label for="contactName">Name:</label>
+                <input type="text" name="user" id="contactName" value="" data-theme="a" required>
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" value="" data-theme="a" required>
+                <label for="textarea">Comment:</label>
+                <textarea cols="40" rows="8" name="textarea" id="textarea" required></textarea>
+                <label for="mailinglist">Would you like to join our mailing list?</label>
+                <input type="checkbox" name="mailinglist" id="mailinglist" checked="">
+
+                <button type="submit"
+                    class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Code for calorie counter popup -->
+
+    <div class="ui-popup ui-body-a ui-content" data-role="popup" id="counter">
+        <a href="#" data-rel="back"
+            class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+        <h3>Daily calorie intake:</h3>
+        <h3 id="dailyTotal">0 kcals</h3>
+        <button type="submit" id="reset"
+            class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Reset</button>
+    </div>
+
+    <!-- Scripts to ensure footer functions across all pages -->
+
+    <script>
+        $(function () {
+            $("#DevInfo").enhanceWithin().popup();
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#contact").enhanceWithin().popup();
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $("#counter").enhanceWithin().popup();
+        });
+    </script>
+
+    <!-- Home Page code -->
+
+    <div data-role="page" id="home" data-theme="a">
+        <header data-role="header" data-theme="a" style>
+            <h1>CALORIES <br> COUNT</h1>
+        </header>
+
+        <div role="main" class="ui-content">
+
+            <p>Welcome to the Calories Count tracker app. Happy calorie counting!</p>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#about">How it works</a></li>
+                <li><a href="#why">Why calories matter</a></li>
+                <li><a href="#foodgroups">Get Started</a></li>
+            </ul>
+        </div>
+
+
+    </div>
+
+    <!-- About page code -->
+
+    <div data-role="page" id="about" data-theme="a">
+        <header data-role="header" data-theme="a" style>
+            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+            <h1>HOW IT <br> WORKS</h1>
+        </header>
+        <div role="main" class="ui-content">
+
+            <p>Select the relevant section below to find out how this app works.</p>
+            <div data-role="collapsible">
+                <h4>Adding Items</h4>
+                <p>In the get started section simply select the relevant food group and then food item of your choosing
+                    press the add button.</p>
+            </div>
+
+            <div data-role="collapsible">
+                <h4>Checking your daily total</h4>
+                <p>Simply press the daily total button at the bottom of your screen to check how many calories you've
+                    had. There's a reset button to set it to zero at the end of each day.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Why calories matter page -->
+
+    <div data-role="page" id="why" data-theme="a">
+        <header data-role="header" data-theme="a" style>
+            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+            <h1>WHY<br> CALORIES<br> MATTER</h1>
+        </header>
+        <div role="main" class="ui-content">
+            <div data-role="collapsibleset">
+                <div class="info" data-role="collapsible">
+                    <h1>Understanding calories</h1>
+                    <p>The amount of energy in an item of food or drink is measured in calories.
+                        When we eat and drink more calories than we use up, our bodies store the excess as body fat. If
+                        this
+                        continues over time we may put on weight.</p>
+                    <p>As a guide, an average man needs around 2,500kcal (10,500kJ) a day to maintain a healthy body
+                        weight.
+                    </p>
+                    <p>For an average woman, that figure is around 2,000kcal (8,400kJ) a day.
+                        These values can vary depending on age, size and levels of physical activity, among other
+                        factors.
+                    </p>
+                </div>
+
+                <div class="info" data-role="collapsible">
+                    <h2>Calories and energy balance</h2>
+                    <p>
+                        Our bodies need energy to keep us alive and our organs functioning normally. When we eat and
+                        drink,
+                        we put energy into our bodies.
+                        Our bodies use up that energy through everyday movement, which includes everything from
+                        breathing to
+                        running.
+                    </p>
+                    <p>To maintain a stable weight, the energy we put into our bodies must be the same as the energy we
+                        use
+                        by normal bodily functions and physical activity.
+                        An important part of a healthy diet is balancing the energy you put into your bodies with the
+                        energy
+                        you use.</p>
+                    <p>For example, the more physical activity we do the more energy we use.
+                        If you consume too much energy on one day, don't worry; just try to take in less energy on the
+                        following days. </p>
+                </div>
+
+                <div class="info" data-role="collapsible">
+                    <h2>
+                        Checking calories in food</h2>
+                    <p>
+                        Knowing the calorie content of food and drink can help ensure you're not consuming too much.</p>
+                    <p>The calorie content of many shop-bought foods is stated on the packaging as part of the nutrition
+                        label.</p>
+                    <p>This information will appear under the &quot;Energy&quot; heading. The calorie content is often
+                        given
+                        in kcals, which is short for &quot;kilocalories&quot;, and also in kJ, which is short for
+                        &quot;kilojoules&quot;.
+                        A &quot;kilocalorie&quot; is another word for what is commonly called a &quot;calorie&quot;, so
+                        1,000 calories will be written as 1,000kcals.</p>
+                    <p>Kilojoules are the metric measurement of calories. To find the energy content in kilojoules,
+                        multiply
+                        the calorie figure by 4.2.</p>
+                    <p>The label will usually tell you how many calories are contained in 100 grams or 100 millilitres
+                        of
+                        the food or drink, so you can compare the calorie content of different products.</p>
+                    <p>Many labels will also state the number of calories in &quot;one portion&quot; of the food. But
+                        remember that the manufacturer's idea of &quot;one portion&quot; may not be the same as yours,
+                        so
+                        there could be more calories in the portion you serve yourself.</p>
+                    <p>You can use the calorie information to assess how a particular food fits into your daily calorie
+                        intake. </p>
+                </div>
+                <div class="info" data-role="collapsible">
+                    <h2>Calorie counters</h2>
+                    <p>
+                        There is a wide range of online calorie counters for computers and mobile phones. Many of these
+                        can
+                        be downloaded and used for free.</p>
+                    <p>NHS Choices can't verify their data but they can be helpful to track your calories by recording
+                        all
+                        of the food you eat in a day.</p>
+                    <p>Some restaurants put calorie information on their menus, so you can also check the calorie
+                        content of
+                        foods when eating out. Calories should be given per portion or per meal.</p>
+                </div>
+
+                <div class="info" data-role="collapsible">
+                    <h2>Burning calories</h2>
+                    <p>
+                        The amount of calories people use by doing a certain physical activity varies, depending on a
+                        range
+                        of factors, including size and age.</p>
+                    <p>The more vigorously you do an activity, the more calories you will use. For example, fast walking
+                        will burn more calories than walking at a moderate pace.</p>
+                    <p>If you're gaining weight, it could mean you've been regularly eating and drinking more calories
+                        than
+                        you've been using.</p>
+                    <p>To lose weight, you need to use more energy than you consume, and continue this over a period of
+                        time.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Food groups page -->
+
+    <div data-role="page" id="foodgroups" data-theme="a">
+        <header data-role="header" data-theme="a" style>
+            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+            <h1>CALORIES <br> COUNT</h1>
+        </header>
+
+        <div role="main" class="ui-content">
+
+            <p>Choose your food group and get adding!</p>
+            <ul data-role="listview" data-inset="true">
+                <li><a href="#fruit">Fruit</a></li>
+                <li><a href="#cereal">Cereal</a></li>
+                <li><a href="#meat">Meat</a></li>
+                <li><a href="#dairy">Dairy</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Fruit section code -->
+
+    <div data-role="page" id="fruit" data-theme="a">
+        <header data-role="header" data-theme="a" style>
+            <a href="#" data-icon="back" data-rel="back" title="Go back">Back</a>
+            <h1>CALORIES <br> COUNT</h1>
+        </header>
+
+        <div role="main" class="ui-content">
+            <ul data-role="listview" data-inset="true" data-shadow="false">
+
+                <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                    <h2>Apple</h2>
+                    <div class="fruit" style="height:fit-content"><img src="images/fruits/apple.png" alt="apple"></div>
+                    <h2>Calories: <span id="apple-cal">62</span></h2>
+
+                    <p style="white-space:normal">Apples come in hundreds of color and flavor varieties. This versatile
+                        fruit can be enjoyed as a
+                        snack, mashed into sauce or even cooked into desserts. Even though the old adage “an apple a day
+                        keeps the doctor away” is not a scientific fact, these fleshy fruits have plenty of health
+                        benefits.</p>
+
+                    <button id="apple" type="submit"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Add</button>
+
+                </li>
+
+                <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                    <h2>Banana</h2>
+                    <div class="fruit" style="height:fit-content"><img src="images/fruits/banana.png" alt="banana">
+                    </div>
+                    <h2>Calories: <span id="banana-cal">90</span></h2>
+
+                    <p style="white-space:normal">The banana is one of the most popular fruits in the world despite the
+                        limited climates that it can grow in. These sweet tropical fruits are often used in desserts,
+                        blended into smoothies and enjoyed alone.</p>
+
+                    <button id="banana" type="submit"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Add</button>
+
+                </li>
+                <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                    <h2>Grapes</h2>
+                    <div class="fruit" style="height:fit-content"><img src="images/fruits/grapes.png" alt="grapes">
+                    </div>
+                    <h2>Calories: <span id="grapes-cal">67</span> per 100g</h2>
+
+                    <p style="white-space:normal">Grapes are one of the most versatile fruits that people all over the
+                        world enjoy. They come in a variety of flavors and colors and are used in juice, jelly and
+                        wines, as well as eaten raw. These sweet snacks have high sugar content when fresh and low sugar
+                        content when fermented.</p>
+
+                    <button id="grapes" type="submit"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Add</button>
+
+                </li>
+                <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                    <h2>Mango</h2>
+                    <div class="fruit" style="height:fit-content"><img src="images/fruits/mango.png" alt="mango">
+                    </div>
+                    <h2>Calories: <span id="mango-cal">202</span></h2>
+
+                    <p style="white-space:normal">This soft and tangy drupe is enjoyed raw and used in desserts like ice
+                        cream. Mangoes are super sweet, which makes them a perfect sugar replacement in smoothies.</p>
+
+                    <button id="mango" type="submit"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Add</button>
+
+                </li>
+                <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                    <h2>Orange</h2>
+                    <div class="fruit" style="height:fit-content"><img src="images/fruits/orange.png" alt="orange">
+                    </div>
+                    <h2>Calories: <span id="orange-cal">62</span></h2>
+
+                    <p style="white-space:normal">Oranges are hybrid fruits, stemmed from pomelos and mandarins. These
+                        citrus fruits are surrounded by a tough peel, encasing sweet and tart flavors inside. Oranges
+                        are used in a variety of ways but are most often enjoyed fresh.</p>
+
+                    <button id="orange" type="submit"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Add</button>
+
+                </li>
+                <li data-role="collapsible" data-iconpos="right" data-inset="false">
+                    <h2>Pear</h2>
+                    <div class="fruit" style="height:fit-content"><img src="images/fruits/pear.png" alt="pear">
+                    </div>
+                    <h2>Calories: <span id="pear-cal">57</span></h2>
+
+                    <p style="white-space:normal">This sweet and crunchy snack comes in a variety of colors and shapes.
+                        Pears can be enjoyed fresh, cooked in cinnamon or baked into desserts. Though not particularly
+                        high in any specific nutrient, the pear boasts a range of micronutrients.</p>
+
+                    <button id="pear" type="submit"
+                        class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left ui-icon-check">Add</button>
+
+                </li>
+            </ul>
+
+
+        </div>
+    </div>
+
+    <!-- Calorie counter javascript -->
+    <script>
+
+// Setting calories default value to zero and adding it to local storage
+        let calories = 0
+        localStorage.setItem("calories", calories);
+
+// Updating the calorie local storage value when apples are added
+        document.getElementById("apple").addEventListener("click", function () {
+            let apple = +document.getElementById("apple-cal").innerHTML;
+            localStorage.setItem("calories", calories += apple);
+
+        })
+
+// Updating the calorie local storage value when bananas are added
+        document.getElementById("banana").addEventListener("click", function () {
+            let banana = +document.getElementById("banana-cal").innerHTML;
+            localStorage.setItem("calories", calories += banana);
+        })
+
+// Updating the calorie local storage value when grapes are added
+        document.getElementById("grapes").addEventListener("click", function () {
+            let grapes = +document.getElementById("grapes-cal").innerHTML;
+            localStorage.setItem("calories", calories += grapes);
+        })
+
+
+// Updating the calorie local storage value when mangoes are added
+        document.getElementById("mango").addEventListener("click", function () {
+            let mango = +document.getElementById("mango-cal").innerHTML;
+            localStorage.setItem("calories", calories += mango);
+        })
+
+// Updating the calorie local storage value when oranges are added
+        document.getElementById("orange").addEventListener("click", function () {
+            let orange = +document.getElementById("orange-cal").innerHTML;
+            localStorage.setItem("calories", calories += orange);
+        })
+    
+// Updating the calorie local storage value when pears are added
+        document.getElementById("pear").addEventListener("click", function () {
+            let pear = +document.getElementById("pear-cal").innerHTML;
+            localStorage.setItem("calories", calories += pear);
+        })
+
+// Displaying the total calories when the calorie counter is clicked
+        document.getElementById("calorieCounter").addEventListener("click", function () {
+            document.getElementById("dailyTotal").innerHTML = localStorage.getItem("calories") + " kcals"
+        })
+
+// Resetting the local storage value to zero when the reset button is pressed
+        document.getElementById("reset").addEventListener("click", function () {
+            localStorage.setItem("calories", calories = 0);
+            document.getElementById("dailyTotal").innerHTML = localStorage.getItem("calories") + " kcals"
+        })
+    </script>
+</body>
+
+</html>
